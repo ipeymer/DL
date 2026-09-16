@@ -16,10 +16,10 @@
     <div class="reveal">
         <div class="slides">
             <section>
-                <h1>Практическая №2<br />
+                <h1>Практическая работа<br />
                     Настройка сервера имен </h1>
             </section>
-            <section>
+            <!-- <section>
                 <ol>
                     <li>Откройте терминал</li>
                     <li>Получите адрес учебного компьютера</li>
@@ -29,7 +29,7 @@
                     <li>Используйте редактор "nano" (или "vi")</li>
                     <li>Управление демоном "/etc/init.d/named"</li>
                 </ol>
-            </section>
+            </section> -->
             <section>
                 <section>
                     <h2>Теоретическая часть</h2>
@@ -139,12 +139,20 @@ comp18      IN    A        10.22.33.7</code></pre>
 domain our.lan</code></pre>
                 </section>
                 <section>
-                    <p>После первоначального конфигурирования демон должен быть запущен</p>
-                    <pre><code>/etc/init.d/named start</code></pre>
-                    <p>После изменения конфигурации демон должен быть перезапущен</p>
-                    <pre><code>/etc/init.d/named restart</code></pre>
-                    <p>или конфигурация должны быть перечитана</p>
-                    <pre><code>/etc/init.d/named reload</code></pre>
+                    <p>Для управленя демонами используется утилита <b>systemctl</b></p>
+                    <p>Для запуска демона:</p>
+                    <pre><code>systemctl start имя_демона</code></pre>
+                    <p>Для останова демона:</p>
+                    <pre><code>systemctl stop имя_демона</code></pre>
+                    <p>Для проверки статуса демона:</p>
+                    <pre><code>systemctl status имя_демона</code></pre>
+                    </section>
+                    <section
+                    <p>Для включения демона в автозагрузку и немедленного его запуска:</p>
+                    <pre><code>systemctl enable --now имя_демона</code></pre>
+                    <p>Для того чтобы изменения конфигурации вступили в силу:</p>
+                    <pre><code>systemctl reload имя_демона</code></pre>
+                    <p>В данном имя_демона = <b>bind</b></p>
                 </section>
             </section>
             <section>
